@@ -13,13 +13,17 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "images": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::image.image",
-      "mappedBy": "subtabs"
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
     },
     "portfolio": {
       "type": "relation",

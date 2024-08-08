@@ -22,12 +22,6 @@
         "videos",
         "audios"
       ]
-    },
-    "subtabs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::subtab.subtab",
-      "inversedBy": "images"
     }
   }
 }

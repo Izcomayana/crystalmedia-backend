@@ -829,11 +829,6 @@ export interface ApiImageImage extends Schema.CollectionType {
   attributes: {
     img: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.Required;
-    subtabs: Attribute.Relation<
-      'api::image.image',
-      'manyToMany',
-      'api::subtab.subtab'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -903,12 +898,8 @@ export interface ApiSubtabSubtab extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    images: Attribute.Relation<
-      'api::subtab.subtab',
-      'manyToMany',
-      'api::image.image'
-    >;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    images: Attribute.Media<'images', true> & Attribute.Required;
     portfolio: Attribute.Relation<
       'api::subtab.subtab',
       'manyToOne',
@@ -947,7 +938,7 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     role: Attribute.String & Attribute.Required;
-    image: Attribute.Media<'images', true> & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
