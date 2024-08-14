@@ -861,13 +861,13 @@ export interface ApiPortfolioPortfolio extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     video: Attribute.Media<'videos' | 'images'>;
-    caption: Attribute.Text & Attribute.Unique;
     subtabs: Attribute.Relation<
       'api::portfolio.portfolio',
       'oneToMany',
       'api::subtab.subtab'
     >;
     value: Attribute.String & Attribute.Required & Attribute.Unique;
+    caption: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -949,6 +949,36 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
 }
 
+export interface ApiTipsVideoTipsVideo extends Schema.CollectionType {
+  collectionName: 'tips_videos';
+  info: {
+    singularName: 'tips-video';
+    pluralName: 'tips-videos';
+    displayName: 'TipsVideo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    video: Attribute.Media<'videos', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tips-video.tips-video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tips-video.tips-video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -972,6 +1002,7 @@ declare module '@strapi/types' {
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::subtab.subtab': ApiSubtabSubtab;
       'api::team.team': ApiTeamTeam;
+      'api::tips-video.tips-video': ApiTipsVideoTipsVideo;
     }
   }
 }

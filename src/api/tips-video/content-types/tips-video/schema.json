@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tips_videos",
+  "info": {
+    "singularName": "tips-video",
+    "pluralName": "tips-videos",
+    "displayName": "TipsVideo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

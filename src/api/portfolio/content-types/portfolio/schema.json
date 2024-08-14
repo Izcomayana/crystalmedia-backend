@@ -25,10 +25,6 @@
         "images"
       ]
     },
-    "caption": {
-      "type": "text",
-      "unique": true
-    },
     "subtabs": {
       "type": "relation",
       "relation": "oneToMany",
@@ -39,6 +35,9 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "caption": {
+      "type": "blocks"
     }
   }
 }
