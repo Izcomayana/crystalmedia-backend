@@ -802,9 +802,9 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     date: Attribute.Date & Attribute.Required;
-    post: Attribute.Text & Attribute.Required & Attribute.Unique;
     writer: Attribute.String & Attribute.Required;
     img: Attribute.Media<'images'> & Attribute.Required;
+    post: Attribute.Blocks & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

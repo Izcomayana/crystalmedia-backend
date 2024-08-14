@@ -21,22 +21,21 @@
       "type": "date",
       "required": true
     },
-    "post": {
-      "type": "text",
-      "required": true,
-      "unique": true
-    },
     "writer": {
       "type": "string",
       "required": true,
       "unique": false
     },
     "img": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "post": {
+      "type": "blocks",
       "required": true
     }
   }
