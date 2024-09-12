@@ -39,7 +39,7 @@
     "caption": {
       "type": "blocks"
     },
-    "image": {
+    "images": {
       "allowedTypes": [
         "images",
         "files",
