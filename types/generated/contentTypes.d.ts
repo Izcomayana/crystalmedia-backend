@@ -868,6 +868,7 @@ export interface ApiPortfolioPortfolio extends Schema.CollectionType {
     >;
     value: Attribute.String & Attribute.Required & Attribute.Unique;
     caption: Attribute.Blocks;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
