@@ -804,7 +804,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     date: Attribute.Date & Attribute.Required;
     writer: Attribute.String & Attribute.Required;
     img: Attribute.Media<'images'> & Attribute.Required;
-    post: Attribute.Blocks & Attribute.Required;
+    post: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
