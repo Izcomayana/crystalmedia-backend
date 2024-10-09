@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "whatwedos",
+  "info": {
+    "singularName": "whatwedo",
+    "pluralName": "whatwedos",
+    "displayName": "Whatwedo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contents": {
+      "type": "richtext",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

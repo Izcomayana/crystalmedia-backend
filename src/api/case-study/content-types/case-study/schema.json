@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies",
+  "info": {
+    "singularName": "case-study",
+    "pluralName": "case-studies",
+    "displayName": "CaseStudy"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "details": {
+      "type": "richtext",
+      "required": false
+    },
+    "subtab": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subtab.subtab",
+      "inversedBy": "case_studies"
+    }
+  }
+}

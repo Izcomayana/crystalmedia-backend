@@ -815,6 +815,42 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
+export interface ApiCaseStudyCaseStudy extends Schema.CollectionType {
+  collectionName: 'case_studies';
+  info: {
+    singularName: 'case-study';
+    pluralName: 'case-studies';
+    displayName: 'CaseStudy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    details: Attribute.RichText;
+    subtab: Attribute.Relation<
+      'api::case-study.case-study',
+      'manyToOne',
+      'api::subtab.subtab'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::case-study.case-study',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::case-study.case-study',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiImageImage extends Schema.CollectionType {
   collectionName: 'images';
   info: {
@@ -907,6 +943,11 @@ export interface ApiSubtabSubtab extends Schema.CollectionType {
       'api::portfolio.portfolio'
     >;
     value: Attribute.String & Attribute.Required & Attribute.Unique;
+    case_studies: Attribute.Relation<
+      'api::subtab.subtab',
+      'oneToMany',
+      'api::case-study.case-study'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -980,6 +1021,38 @@ export interface ApiTipsVideoTipsVideo extends Schema.CollectionType {
   };
 }
 
+export interface ApiWhatwedoWhatwedo extends Schema.CollectionType {
+  collectionName: 'whatwedos';
+  info: {
+    singularName: 'whatwedo';
+    pluralName: 'whatwedos';
+    displayName: 'Whatwedo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contents: Attribute.RichText & Attribute.Required;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::whatwedo.whatwedo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::whatwedo.whatwedo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -999,11 +1072,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
+      'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::image.image': ApiImageImage;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::subtab.subtab': ApiSubtabSubtab;
       'api::team.team': ApiTeamTeam;
       'api::tips-video.tips-video': ApiTipsVideoTipsVideo;
+      'api::whatwedo.whatwedo': ApiWhatwedoWhatwedo;
     }
   }
 }

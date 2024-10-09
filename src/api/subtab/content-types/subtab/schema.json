@@ -18,12 +18,12 @@
       "unique": true
     },
     "images": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": true,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "portfolio": {
       "type": "relation",
@@ -35,6 +35,12 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "case_studies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case-study.case-study",
+      "mappedBy": "subtab"
     }
   }
 }
