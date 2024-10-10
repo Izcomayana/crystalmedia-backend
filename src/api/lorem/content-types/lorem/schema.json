@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lorems",
+  "info": {
+    "singularName": "lorem",
+    "pluralName": "lorems",
+    "displayName": "lorem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ipsum": {
+      "type": "string"
+    }
+  }
+}
