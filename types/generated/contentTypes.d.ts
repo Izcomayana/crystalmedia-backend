@@ -889,6 +889,7 @@ export interface ApiLoremLorem extends Schema.CollectionType {
     singularName: 'lorem';
     pluralName: 'lorems';
     displayName: 'lorem';
+    description: '';
   };
   options: {
     draftAndPublish: true;

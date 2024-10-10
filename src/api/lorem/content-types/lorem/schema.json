@@ -4,7 +4,8 @@
   "info": {
     "singularName": "lorem",
     "pluralName": "lorems",
-    "displayName": "lorem"
+    "displayName": "lorem",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
