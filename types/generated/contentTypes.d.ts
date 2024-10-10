@@ -883,6 +883,36 @@ export interface ApiImageImage extends Schema.CollectionType {
   };
 }
 
+export interface ApiLoremLorem extends Schema.CollectionType {
+  collectionName: 'lorems';
+  info: {
+    singularName: 'lorem';
+    pluralName: 'lorems';
+    displayName: 'lorem';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ipsunm: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lorem.lorem',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lorem.lorem',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPortfolioPortfolio extends Schema.CollectionType {
   collectionName: 'portfolios';
   info: {
@@ -1074,6 +1104,7 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::image.image': ApiImageImage;
+      'api::lorem.lorem': ApiLoremLorem;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::subtab.subtab': ApiSubtabSubtab;
       'api::team.team': ApiTeamTeam;
