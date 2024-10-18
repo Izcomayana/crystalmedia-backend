@@ -870,12 +870,12 @@ export interface ApiImageImage extends Schema.CollectionType {
       'oneToOne',
       'api::case-study.case-study'
     >;
+    client: Attribute.String & Attribute.Required & Attribute.Unique;
     subtab: Attribute.Relation<
       'api::image.image',
       'manyToOne',
       'api::subtab.subtab'
     >;
-    client: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -947,7 +947,7 @@ export interface ApiSubtabSubtab extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    images: Attribute.Relation<
+    imgs: Attribute.Relation<
       'api::subtab.subtab',
       'oneToMany',
       'api::image.image'
@@ -958,6 +958,7 @@ export interface ApiSubtabSubtab extends Schema.CollectionType {
       'api::portfolio.portfolio'
     >;
     value: Attribute.String & Attribute.Required & Attribute.Unique;
+    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

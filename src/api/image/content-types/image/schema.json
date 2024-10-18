@@ -29,16 +29,16 @@
       "target": "api::case-study.case-study",
       "inversedBy": "image"
     },
-    "subtab": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::subtab.subtab",
-      "inversedBy": "images"
-    },
     "client": {
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "subtab": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subtab.subtab",
+      "inversedBy": "imgs"
     }
   }
 }
