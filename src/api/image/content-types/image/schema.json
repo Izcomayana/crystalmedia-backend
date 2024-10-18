@@ -31,7 +31,7 @@
     },
     "client": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "subtab": {

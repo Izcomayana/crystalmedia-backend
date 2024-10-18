@@ -870,7 +870,7 @@ export interface ApiImageImage extends Schema.CollectionType {
       'oneToOne',
       'api::case-study.case-study'
     >;
-    client: Attribute.String & Attribute.Required & Attribute.Unique;
+    client: Attribute.String & Attribute.Unique;
     subtab: Attribute.Relation<
       'api::image.image',
       'manyToOne',
