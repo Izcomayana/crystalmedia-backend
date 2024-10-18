@@ -828,10 +828,10 @@ export interface ApiCaseStudyCaseStudy extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     details: Attribute.RichText;
-    subtab: Attribute.Relation<
+    image: Attribute.Relation<
       'api::case-study.case-study',
-      'manyToOne',
-      'api::subtab.subtab'
+      'oneToOne',
+      'api::image.image'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -865,6 +865,17 @@ export interface ApiImageImage extends Schema.CollectionType {
   attributes: {
     img: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.Required;
+    case_study: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'api::case-study.case-study'
+    >;
+    subtab: Attribute.Relation<
+      'api::image.image',
+      'manyToOne',
+      'api::subtab.subtab'
+    >;
+    client: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -876,37 +887,6 @@ export interface ApiImageImage extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::image.image',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLoremLorem extends Schema.CollectionType {
-  collectionName: 'lorems';
-  info: {
-    singularName: 'lorem';
-    pluralName: 'lorems';
-    displayName: 'lorem';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    ipsunm: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::lorem.lorem',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::lorem.lorem',
       'oneToOne',
       'admin::user'
     > &
@@ -967,18 +947,17 @@ export interface ApiSubtabSubtab extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    images: Attribute.Media<'images', true> & Attribute.Required;
+    images: Attribute.Relation<
+      'api::subtab.subtab',
+      'oneToMany',
+      'api::image.image'
+    >;
     portfolio: Attribute.Relation<
       'api::subtab.subtab',
       'manyToOne',
       'api::portfolio.portfolio'
     >;
     value: Attribute.String & Attribute.Required & Attribute.Unique;
-    case_studies: Attribute.Relation<
-      'api::subtab.subtab',
-      'oneToMany',
-      'api::case-study.case-study'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1105,7 +1084,6 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::image.image': ApiImageImage;
-      'api::lorem.lorem': ApiLoremLorem;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::subtab.subtab': ApiSubtabSubtab;
       'api::team.team': ApiTeamTeam;

@@ -20,11 +20,11 @@
       "type": "richtext",
       "required": false
     },
-    "subtab": {
+    "image": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::subtab.subtab",
-      "inversedBy": "case_studies"
+      "relation": "oneToOne",
+      "target": "api::image.image",
+      "mappedBy": "case_study"
     }
   }
 }
